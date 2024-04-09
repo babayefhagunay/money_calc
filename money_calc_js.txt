@@ -1,0 +1,25 @@
+document.getElementById("btn").addEventListener("click", function(e) {
+    e.preventDefault();
+
+    const eded = parseInt(document.getElementById("input").value); // daxil olunan ededi istifadeye verir
+    const pullar = [500,200,100,50,20,10,5,1]; 
+
+    const outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = ''; // Her tıklamada evvelki neticeni silir
+
+    let qaliq_pul = eded; 
+    const dollar = {}; 
+
+    pullar.forEach(pul => {
+        const say = Math.floor(qaliq_pul / pul); //bu olmasa kesr ededler alinar
+        if (say > 0) {
+            dollar[pul] = say; 
+            qaliq_pul %= pul; 
+        }
+    });
+
+    Object.keys(dollar).forEach(azn => {
+        const pul_sayi = dollar[azn];
+        outputDiv.innerHTML += `<img src="${azn}.jpg" class="image"> * ${pul_sayi}<br>`;
+    });
+});

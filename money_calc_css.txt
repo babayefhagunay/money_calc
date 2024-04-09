@@ -1,0 +1,8 @@
+.head{
+    display: flex;
+    gap: 10px;
+}
+
+.image{
+    height: 100px;
+}
