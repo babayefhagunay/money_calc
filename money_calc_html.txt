@@ -8,10 +8,10 @@
 </head>
 <body>
 
-    <input type="number" id="input" placeholder="Miktar">
-    <button id="btn">Hesapla</button>
+    <input type="number" id="input" placeholder="manatı daxil edin">
+    <button id="btn">Yarat</button>
 
-    <div id="output"></div>
+    <div id="hesab"></div>
 
     <script src="./9-4.js"></script>
 </body>

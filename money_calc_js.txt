@@ -1,25 +1,40 @@
 document.getElementById("btn").addEventListener("click", function(e) {
-    e.preventDefault();
+    e.preventDefault();   
 
-    const eded = parseInt(document.getElementById("input").value); // daxil olunan ededi istifadeye verir
-    const pullar = [500,200,100,50,20,10,5,1]; 
+    const eded = parseInt(document.getElementById("input").value); 
+    const pullar = [500, 200, 100, 50, 20, 10, 5, 1]; 
 
-    const outputDiv = document.getElementById('output');
-    outputDiv.innerHTML = ''; // Her tıklamada evvelki neticeni silir
+    const sekiller = {
+        500: "500.jpg",
+        200: "200.jpg",
+        100: "100.jpg",
+        50: "50.jpg",
+        20: "20.jpg",
+        10: "10.jpg",
+        5: "5.jpg",
+        1: "1.jpg"
+    };
+
+    const hesabDivi = document.getElementById('hesab');
+    hesabDivi.innerHTML = '';
 
     let qaliq_pul = eded; 
-    const dollar = {}; 
+    const dollar = []; 
 
-    pullar.forEach(pul => {
-        const say = Math.floor(qaliq_pul / pul); //bu olmasa kesr ededler alinar
+    for (let i = 0; i < pullar.length; i++) {
+        const pul = pullar[i];
+        const say = Math.floor(qaliq_pul / pul); 
         if (say > 0) {
-            dollar[pul] = say; 
+            dollar.push({ [pul] : say }); 
             qaliq_pul %= pul; 
         }
-    });
+    }
 
-    Object.keys(dollar).forEach(azn => {
-        const pul_sayi = dollar[azn];
-        outputDiv.innerHTML += `<img src="${azn}.jpg" class="image"> * ${pul_sayi}<br>`;
-    });
+    for (let j = 0; j < dollar.length; j++) {
+        const pul = Object.keys(dollar[j]);
+        const say = dollar[j][pul];
+        const sekil = sekiller[pul];
+        hesabDivi.innerHTML += `<img src="${sekil}" class="image"> x${say}<br>`;
+    }
 });
+
